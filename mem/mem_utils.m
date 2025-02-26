@@ -88,6 +88,7 @@ task_info(
 #else
 #include <mach/mach_vm.h>
 #include <mach-o/dyld_images.h>
+#include <libproc.h>
 #endif
 
 pid_t get_pid_by_name_of_proc_bin_andr(const char* name_of_bin)
