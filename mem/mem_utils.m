@@ -115,8 +115,8 @@ task_t get_task_for_pid(pid_t pid)
 
 
 /*
- 
-   * Thanks for Lavka (Telegram: @wallhack_cheat) to this idea
+
+   * Thanks for Lavka (Telegram: @wallhack_cheat) to this idea for use func https://newosxbook.com/articles/PST2.html
    * get_task_by_pid is analog for get_task_for_pid
  
 */
