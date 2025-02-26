@@ -9,9 +9,15 @@
 pid_t get_pid_by_name_of_proc_bin_andr(const char* name_of_bin);
 task_t get_task_for_pid(pid_t pid);
 
-// analog for get_task_for_pid, idea: Lavka (Telegram: https://t.me/wallhack_cheat)
+
+// analog for get_task_for_pid https://newosxbook.com/articles/PST2.html,
+// idea to use: Lavka (Telegram: https://t.me/wallhack_cheat)
+
 task_t get_task_by_pid(pid_t pid);
-// --------------------------------------------------------------------------------
+
+// ---------------------------------------------------------------------
+// ---------------------------------------------------------------------
+
 
 vm_map_offset_t get_base_address(mach_port_t task);
 
