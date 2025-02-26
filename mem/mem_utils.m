@@ -46,6 +46,28 @@ mach_vm_region_recurse(
                        vm_region_recurse_info_t info,
                        mach_msg_type_number_t   *infoCnt);
 
+extern kern_return_t
+processor_set_default(
+                      host_t host,
+                      processor_set_name_t *default_set
+                      );
+
+extern kern_return_t
+host_processor_set_priv(
+                        host_priv_t host_priv,
+                        processor_set_name_t set_name,
+                        processor_set_t *set
+                        );
+
+extern kern_return_t
+processor_set_tasks(
+                    processor_set_t processor_set,
+                    task_array_t *task_list,
+                    mach_msg_type_number_t *task_listCnt
+                    );
+
+kern_return_t pid_for_task(task_t task, int *pid);
+
 #else
 #include <mach/mach_vm.h>
 #endif
