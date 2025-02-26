@@ -115,8 +115,8 @@ Please make sure to update tests as appropriate.
 
 ## Credits
 
-- Code by: andrdev
-- Function get_task_by_pid (analog get_task_for_pid) inspired by: Lavka (Telegram: @wallhack_cheat) – the idea for func.
+- Code by: andrdev (https://t.me/andrdevv)
+- Function get_task_by_pid (analog get_task_for_pid) inspired by: Lavka (https://t.me/wallhack_cheat)  – the idea for func.
 
 ## License
 Feel free to use and modify this code for educational and research purposes. Please ensure that you have the proper permissions and adhere to relevant laws when using this tool.
