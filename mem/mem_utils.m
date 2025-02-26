@@ -22,6 +22,15 @@
 */
 
 extern kern_return_t
+vm_read(
+        vm_map_read_t target_task,
+        vm_address_t address,
+        vm_size_t size,
+        vm_offset_t *data,
+        mach_msg_type_number_t *dataCnt
+        );
+
+extern kern_return_t
 mach_vm_read_overwrite(
                        vm_map_t           target_task,
                        mach_vm_address_t  address,
@@ -66,10 +75,19 @@ processor_set_tasks(
                     mach_msg_type_number_t *task_listCnt
                     );
 
-kern_return_t pid_for_task(task_t task, int *pid);
+extern kern_return_t pid_for_task(task_t task, int *pid);
+
+extern kern_return_t
+task_info(
+          task_name_t target_task,
+          task_flavor_t flavor,
+          task_info_t task_info_out,
+          mach_msg_type_number_t *task_info_outCnt
+          );
 
 #else
 #include <mach/mach_vm.h>
+#include <mach-o/dyld_images.h>
 #endif
 
 pid_t get_pid_by_name_of_proc_bin_andr(const char* name_of_bin)
