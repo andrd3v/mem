@@ -4,7 +4,7 @@ This tool allows you to interact with the memory of running processes on iOS or 
 
 ## Features
 - Retrieve the PID of a process by its binary name.
-- Access a task port associated with a process, either through task_for_pid or an alternative method (get_task_by_pid).
+- Access a task port associated with a process, either through get_task_for_pid or an alternative method (get_task_by_pid).
 - Get the base address of a process’s memory.
 - Read and write values at specified memory addresses within a process’s memory space.
 
@@ -116,7 +116,7 @@ Please make sure to update tests as appropriate.
 ## Credits
 
 - Code by: andrdev
-- Function get_task_by_pid inspired by: Lavka (Telegram: @wallhack_cheat) – the idea for func.
+- Function get_task_by_pid (analog get_task_for_pid) inspired by: Lavka (Telegram: @wallhack_cheat) – the idea for func.
 
 ## License
 Feel free to use and modify this code for educational and research purposes. Please ensure that you have the proper permissions and adhere to relevant laws when using this tool.
