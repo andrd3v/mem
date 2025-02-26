@@ -11,7 +11,7 @@ This tool allows you to interact with the memory of running processes on iOS or 
 
 ## How to Use
 
-- Permissions: The tool requires access to the task ports of processes. This may require root privileges (run with sudo ./program) or the appropriate entitlements (sign with ent.plist).
+- Permissions: The tool requires access to the task ports of processes. This may require root privileges (run with sudo ./program)
 
 
 ## Usage
@@ -93,18 +93,6 @@ value hp: 123, address of player.hp: 0x16ce9ef58
 - Memory Leaks: When using functions like mach_vm_read or vm_read, it’s important to manage memory correctly to avoid leaks. Ensure that you call vm_deallocate where necessary.
 - Error Handling: The program provides basic error handling for failed operations (e.g., failed to read or write memory, unable to find task port).
 - Compatibility: This tool is designed specifically for macOS and iOS environments. It relies on libsystem_kernel.dylib for certain system calls like mach_vm_read_overwrite and mach_vm_write. (On iOS)
-
-Please, if you use iOS, this work only with sudo, you need jailbreak or TrollStore or etc... When you sign ipa, add ent.plist for entitlements.
-In ent.plist change com.andrdev.XXX to your bundleID.
-
-#### add in Makefile (for your app, with theos): 
-```Makefile
-ifeq ($(TARGET_CODESIGN),ldid)
-YOURAPP_CODESIGN_FLAGS += -Sent.plist
-else
-YOURAPP_CODESIGN_FLAGS += --entitlements ent.plist $(TARGET_CODESIGN_FLAGS)
-endif
-```
 
 ## Contributing
 
