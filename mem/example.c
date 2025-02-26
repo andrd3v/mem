@@ -26,7 +26,7 @@
      mach_port_t port_pid_2 = get_task_by_pid(pid);
      if (port_pid_2 != MACH_PORT_NULL)
      {
-       printf("[!] mach port for pid %d = %d  [analog by Lavka]\n", pid, port_pid_2);
+       printf("[!] mach port for pid %d = %d  [analog]\n", pid, port_pid_2);
      } else {
        printf("[!] mach port not found.");
      }
