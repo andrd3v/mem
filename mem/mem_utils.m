@@ -88,6 +88,8 @@ task_info(
           mach_msg_type_number_t *task_info_outCnt
           );
 
+extern host_name_port_t mach_host_self();
+
 #else
 #include <mach/mach_vm.h>
 #include <mach-o/dyld_images.h>
@@ -186,7 +188,7 @@ task_t get_task_for_pid(pid_t pid)
  
 */
 
-
+#if !TARGET_OS_IPHONE && !TARGET_OS_IOS && !TARGET_OS_TV && !TARGET_OS_WATCH && !TARGET_IPHONE_SIMULATOR
 task_t get_task_by_pid(pid_t pid)
 {
     task_port_t psDefault;
@@ -199,7 +201,7 @@ task_t get_task_by_pid(pid_t pid)
    
     host_t self_host = mach_host_self();
     kr = processor_set_default(self_host, &psDefault);
-    if (kr != KERN_SUCCESS) 
+    if (kr != KERN_SUCCESS)
     {
         fprintf(stderr, "Error in processor_set_default: %x\n", kr);
         return MACH_PORT_NULL;
@@ -207,7 +209,7 @@ task_t get_task_by_pid(pid_t pid)
 
    
     kr = host_processor_set_priv(self_host, psDefault, &psDefault_control);
-    if (kr != KERN_SUCCESS) 
+    if (kr != KERN_SUCCESS)
     {
         fprintf(stderr, "Error in host_processor_set_priv: %x\n", kr);
         return MACH_PORT_NULL;
@@ -221,12 +223,12 @@ task_t get_task_by_pid(pid_t pid)
     }
 
   
-    for (int i = 0; i < numTasks; i++) 
+    for (int i = 0; i < numTasks; i++)
     {
         int task_pid;
         kr = pid_for_task(tasks[i], &task_pid);
         if (kr != KERN_SUCCESS) {
-            continue; 
+            continue;
         }
 
         if (task_pid == pid) return tasks[i];
@@ -234,6 +236,58 @@ task_t get_task_by_pid(pid_t pid)
 
     return MACH_PORT_NULL;
 }
+#endif // !TARGET_OS_IPHONE && !TARGET_OS_IOS && !TARGET_OS_TV && !TARGET_OS_WATCH && !TARGET_IPHONE_SIMULATOR
+
+#if TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+task_t get_task_by_pid(pid_t pid)
+{
+    task_port_t psDefault;
+    task_port_t psDefault_control;
+
+    task_array_t tasks;
+    mach_msg_type_number_t numTasks;
+    kern_return_t kr;
+
+   
+    host_t self_host = mach_host_self();
+    kr = processor_set_default(self_host, &psDefault);
+    if (kr != KERN_SUCCESS)
+    {
+        fprintf(stderr, "Error in processor_set_default: %x\n", kr);
+        return MACH_PORT_NULL;
+    }
+
+   
+    kr = host_processor_set_priv(self_host, psDefault, &psDefault_control);
+    if (kr != KERN_SUCCESS)
+    {
+        fprintf(stderr, "Error in host_processor_set_priv: %x\n", kr);
+        return MACH_PORT_NULL;
+    }
+
+  
+    kr = processor_set_tasks(psDefault_control, &tasks, &numTasks);
+    if (kr != KERN_SUCCESS) {
+        fprintf(stderr, "Error in processor_set_tasks: %x\n", kr);
+        return MACH_PORT_NULL;
+    }
+
+  
+    for (int i = 0; i < numTasks; i++)
+    {
+        int task_pid;
+        kr = pid_for_task(tasks[i], &task_pid);
+        if (kr != KERN_SUCCESS) {
+            continue;
+        }
+
+        if (task_pid == pid) return tasks[i];
+    }
+
+    return MACH_PORT_NULL;
+}
+#endif // TARGET_OS_IPHONE || TARGET_IPHONE_SIMULATOR
+
 
 vm_map_offset_t get_base_address(mach_port_t task)
 {
