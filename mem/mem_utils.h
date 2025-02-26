@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <string.h>
-#include <libproc.h>
 #include <sys/sysctl.h>
 #include <mach/mach.h>
 
