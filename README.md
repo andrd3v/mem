@@ -124,7 +124,7 @@ Even if you set `com.apple.security.get-task-allow` (and etc...) in `entitlement
 ## Credits
 
 - Code by: andrdev (https://t.me/andrdevv)
-- Function get_task_by_pid (analog get_task_for_pid (https://newosxbook.com/articles/PST2.html)) inspired by: Lavka (https://t.me/wallhack_cheat)  – the idea for use func .
+- Function get_task_by_pid (analog get_task_for_pid) inspired by: Jonathan Levin (https://newosxbook.com/articles/PST2.html)  – the idea for use func.
 
 ## License
 Feel free to use and modify this code for educational and research purposes. Please ensure that you have the proper permissions and adhere to relevant laws when using this tool.
