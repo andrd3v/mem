@@ -10,7 +10,7 @@ task_t get_task_for_pid(pid_t pid);
 
 
 // analog for get_task_for_pid https://newosxbook.com/articles/PST2.html,
-// idea to use: Lavka (Telegram: https://t.me/wallhack_cheat)
+// idea to use: Jonathan Levin
 
 task_t get_task_by_pid(pid_t pid);
 
