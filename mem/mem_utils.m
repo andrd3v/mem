@@ -183,9 +183,9 @@ task_t get_task_for_pid(pid_t pid)
 
 /*
 
-   * Thanks for Lavka (Telegram: @wallhack_cheat) to this idea for use func https://newosxbook.com/articles/PST2.html
+   * Thanks for Jonathan Levin to this idea for use func https://newosxbook.com/articles/PST2.html
    * get_task_by_pid is analog for get_task_for_pid
- 
+   * maybe now the functions are the same, initially they were different, i decided to leave 2
 */
 
 #if !TARGET_OS_IPHONE && !TARGET_OS_IOS && !TARGET_OS_TV && !TARGET_OS_WATCH && !TARGET_IPHONE_SIMULATOR
