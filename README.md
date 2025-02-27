@@ -94,12 +94,32 @@ value hp: 123, address of player.hp: 0x16ce9ef58
 - Error Handling: The program provides basic error handling for failed operations (e.g., failed to read or write memory, unable to find task port).
 - Compatibility: This tool is designed specifically for macOS and iOS environments. It relies on libsystem_kernel.dylib for certain system calls like mach_vm_read_overwrite and mach_vm_write. (On iOS)
 
+Please, if you use iOS, this work only with sudo, you need jailbreak or TrollStore or etc... When you sign ipa, add ent.plist for entitlements.
+In ent.plist change com.andrdev.XXX to your bundleID.
+
+#### add in Makefile (for your app, with theos): 
+```Makefile
+ifeq ($(TARGET_CODESIGN),ldid)
+YOURAPP_CODESIGN_FLAGS += -Sent.plist
+else
+YOURAPP_CODESIGN_FLAGS += --entitlements ent.plist $(TARGET_CODESIGN_FLAGS)
+endif
+```
+
+
+
 ## Contributing
 
 Pull requests are welcome. For major changes, please open an issue first
 to discuss what you would like to change.
 
 Please make sure to update tests as appropriate.
+
+## Warning!
+
+The `get_task_by_pid` function requires `root` permissions even on iOS.
+
+Even if you set `com.apple.security.get-task-allow` (and etc...) in `entitlements.plist`, iOS will still not allow access to someone else's process.
 
 ## Credits
 
