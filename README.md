@@ -65,7 +65,7 @@ click enter and see result
 ❯ sudo ./mem
 [*] pid of test = 55153
 [!] mach port for pid 55153 = 2563
-[!] mach port for pid 55153 = 2563  [analog by Lavka]
+[!] mach port for pid 55153 = 2563  [analog]
 [+] Base address: 0x0000000102F60000
 Enter the address (in 0x format): 0x16ce9ef58
 You entered address: 0x000000016CE9EF58
